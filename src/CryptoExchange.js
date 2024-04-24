@@ -17,8 +17,6 @@ class CryptoExchange {
       switch (currency) {
         case 'CRO':
           return this.tickerCrypto(currency, 'USDT');
-        default:
-          return this.tickerBinance(currency, 'USDT');
       }
     } else {
       throw new Error('Must specify country.');
@@ -79,31 +77,6 @@ class CryptoExchange {
       }
     } catch (err) {
       console.error(`Coinbase retrieval error: ${err.message}`);
-      return { available: false };
-    }
-  }
-
-  tickerBinance = async (currency, baseCurrency) => {
-    // Docs: https://binance-docs.github.io/apidocs/spot/en/#24hr-ticker-price-change-statistics
-    try {
-      const url =
-        `https://api3.binance.com/api/v3/ticker/24hr?symbol=${currency}${baseCurrency}`;
-      const response = await fetch(url, { cache: 'no-cache' });
-      if (response.ok) {
-        const data = await response.json();
-        const currentPrice = Number.parseFloat(data.lastPrice);
-        const changeSinceOpen = Number.parseFloat(data.priceChangePercent);
-        return {
-          price: currentPrice,
-          volume: Number.parseFloat(data.volume),
-          change: changeSinceOpen,
-          time: new Date(Number.parseFloat(data.closeTime)),
-        };
-      } else {
-        throw new Error(response.statusText);
-      }
-    } catch (err) {
-      console.error(`Binance retrieval error: ${err.message}`);
       return { available: false };
     }
   }
