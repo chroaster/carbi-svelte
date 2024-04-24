@@ -14,10 +14,7 @@ class CryptoExchange {
     if (this.country === 'KOR') {
       return this.tickerBithumb(currency, 'KRW');
     } else if (this.country === 'USA') {
-      switch (currency) {
-        case 'CRO':
-          return this.tickerCrypto(currency, 'USDT');
-      }
+      return this.tickerCoinbase(currency, 'USD');
     } else {
       throw new Error('Must specify country.');
     }
@@ -77,36 +74,6 @@ class CryptoExchange {
       }
     } catch (err) {
       console.error(`Coinbase retrieval error: ${err.message}`);
-      return { available: false };
-    }
-  }
-
-  // Currently fails with CORS error
-  tickerCrypto = async (currency, baseCurrency) => {
-    // Docs: https://exchange-docs.crypto.com/spot/index.html#public-get-ticker
-
-    // return { available: false };
-
-    try {
-      const url =
-        `https://api.crypto.com/v2/public/get-ticker?instrument_name=${currency}_${baseCurrency}`;
-      const response = await fetch(`${url}`, { cache: 'no-cache' });
-      if (response.ok) {
-        const data = (await response.json()).result.data;
-        const currentPrice = Number.parseFloat(data.a);
-        const openPrice = currentPrice - Number.parseFloat(data.c);
-        const changeSinceOpen = 100 * ((currentPrice - openPrice) / openPrice);
-        return {
-          price: currentPrice,
-          volume: Number.parseFloat(data.v),
-          change: changeSinceOpen,
-          time: new Date(Number.parseFloat(data.t)),
-        };
-      } else {
-        throw new Error(response.statusText);
-      }
-    } catch (err) {
-      console.error(`Crypto.com retrieval error: ${err.message}`);
       return { available: false };
     }
   }
