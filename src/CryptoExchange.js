@@ -28,10 +28,9 @@ class CryptoExchange {
   tickerBithumb = async (currency, baseCurrency = 'KRW') => {
     // Docs: https://apidocs.bithumb.com/
     try {
-      const proxy = 'https://simple-cors-proxy.chroaster.com/?url=';
       const url =
         `https://api.bithumb.com/public/ticker/${currency}`;
-      const response = await fetch(`${proxy}${url}`, { cache: 'no-cache', });
+      const response = await fetch(`${url}`, { cache: 'no-cache', });
       if (response.ok) {
         const bithumbResponse = await response.json();
 
@@ -116,10 +115,9 @@ class CryptoExchange {
     // return { available: false };
 
     try {
-      const proxy = `https://simple-cors-proxy.chroaster.com/?url=`;
       const url =
         `https://api.crypto.com/v2/public/get-ticker?instrument_name=${currency}_${baseCurrency}`;
-      const response = await fetch(`${proxy}${url}`, { cache: 'no-cache' });
+      const response = await fetch(`${url}`, { cache: 'no-cache' });
       if (response.ok) {
         const data = (await response.json()).result.data;
         const currentPrice = Number.parseFloat(data.a);
