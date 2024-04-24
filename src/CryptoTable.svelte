@@ -33,15 +33,14 @@
 	const cryptos = [
 		{ symbol: "BTC", link: "https://www.tradingview.com/chart?symbol=COINBASE%3ABTCUSD" },
 		{ symbol: "ETH", link: "https://www.tradingview.com/chart?symbol=COINBASE%3AETHUSD" },
-		{ symbol: "LTC", link: "https://www.tradingview.com/chart?symbol=COINBASE%3ALTCUSD" },
+		{ symbol: "SOL", link: "https://www.tradingview.com/chart?symbol=COINBASE%3AADAUSD" },
 		{ symbol: "ADA", link: "https://www.tradingview.com/chart?symbol=COINBASE%3AADAUSD" },
-		{ symbol: "LINK", link: "https://www.tradingview.com/chart?symbol=COINBASE%3ALINKUSD" },
-		{ symbol: "YFI", link: "https://www.tradingview.com/chart?symbol=COINBASE%3AYFIUSD" },
-		{ symbol: "BNB", link: "https://www.tradingview.com/chart?symbol=COINBASE%3ABNBUSD" },
 		{ symbol: "DOT", link: "https://www.tradingview.com/chart?symbol=COINBASE%3ADOTUSD" },
+		{ symbol: "DOGE", link: "https://www.tradingview.com/chart?symbol=COINBASE%3ADOGEUSD" },
+		{ symbol: "UNI", link: "https://www.tradingview.com/chart?symbol=COINBASE%3AUNIUSD" },
+		{ symbol: "LINK", link: "https://www.tradingview.com/chart?symbol=COINBASE%3ALINKUSD" },
 		{ symbol: "XLM", link: "https://www.tradingview.com/chart?symbol=COINBASE%3AXLMUSD" },
 		{ symbol: "BAT", link: "https://www.tradingview.com/chart?symbol=COINBASE%3ABATUSDC" },
-		{ symbol: "DOGE", link: "https://www.tradingview.com/chart?symbol=COINBASE%3ADOGEUSD" },
 	];
 
 	const refreshRate = 60 * 1000;
