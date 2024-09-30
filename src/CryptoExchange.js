@@ -56,7 +56,7 @@ class CryptoExchange {
     // Docs: https://docs.pro.coinbase.com/#get-24hr-stats
     try {
       const url =
-        `https://api.pro.coinbase.com/products/${currency}-${baseCurrency}/stats`;
+        `https://api.exchange.coinbase.com/products/${currency}-${baseCurrency}/stats`;
       const response = await fetch(url, { cache: 'no-cache' });
       if (response.ok) {
         const data = await response.json();
