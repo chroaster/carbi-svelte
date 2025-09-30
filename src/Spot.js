@@ -4,7 +4,7 @@ class Spot {
   constructor(currency = 'KRW', baseCurrency = 'USD') {
     this.currency = currency;
     this.baseCurrency = baseCurrency;
-    this.url = `https://spot.coolbeans.fyi/${baseCurrency}/${currency}`;
+    this.url = `https://spot.coolbeans.lol/${baseCurrency}/${currency}`;
   }
 
   rate = async () => {
